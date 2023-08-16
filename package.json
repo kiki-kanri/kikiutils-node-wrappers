@@ -14,6 +14,7 @@
   "bugs": {
     "url": "https://github.com/kiki-kanri/kikiutils-node-wrappers/issues"
   },
+  "type": "commonjs",
   "main": "./lib/index.js",
   "files": [
     "./lib/**/*"
