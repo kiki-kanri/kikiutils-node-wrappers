@@ -1,0 +1,30 @@
+{
+	"name": "@kikiutils/wrappers",
+	"version": "1.0.0",
+	"description": "Utils function wrappers.",
+	"license": "MIT",
+	"author": {
+		"name": "kiki-kanri"
+	},
+	"homepage": "https://github.com/kiki-kanri/kikiutils-node-wrappers#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kiki-kanri/kikiutils-node-wrappers.git"
+	},
+	"bugs": {
+		"url": "https://github.com/kiki-kanri/kikiutils-node-wrappers/issues"
+	},
+	"main": "./lib/index.js",
+  "files": [
+    "./lib/**/*"
+  ],
+	"scripts": {
+		"build": "rm -rf ./lib && tsc && tsc-alias"
+	},
+	"keywords": [
+		"wrappers"
+	],
+	"devDependencies": {
+		"typescript": "^5.1.6"
+	}
+}
