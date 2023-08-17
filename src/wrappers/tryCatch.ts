@@ -1,4 +1,4 @@
-import { AsyncFunc, Func } from '@/types';
+import { AnyFunction } from '@/types';
 
 /**
  * Run the function use try/catch.
@@ -7,16 +7,19 @@ import { AsyncFunc, Func } from '@/types';
  *
  * Supports async and sync function.
  */
-export function tryAndGetBoolean<F extends AsyncFunc>(func: F): (...args: Parameters<F>) => Promise<boolean>;
-export function tryAndGetBoolean<F extends Func>(func: F): (...args: Parameters<F>) => boolean;
-export function tryAndGetBoolean<F extends AsyncFunc | Func>(func: F) {
+export function tryAndGetBoolean<
+	RT extends R extends Promise<any> ? Promise<boolean> : boolean,
+	P extends Parameters<F>,
+	R extends ReturnType<F>,
+	F extends AnyFunction
+>(func: F): (...args: P) => RT {
 	return function (...args: Parameters<F>) {
 		try {
 			const result = func(...args);
-			if (result instanceof Promise) return result.then(() => true).catch(() => false);
-			return true;
+			if (result instanceof Promise) return result.then(() => true).catch(() => false) as RT;
+			return true as RT;
 		} catch (error) { }
-		return false;
+		return false as RT;
 	}
 }
 
@@ -27,10 +30,14 @@ export function tryAndGetBoolean<F extends AsyncFunc | Func>(func: F) {
  *
  * Supports async and sync function.
  */
-export function tryAndGetData<F extends AsyncFunc, T = undefined>(func: F, onErrorValue?: T): (...args: Parameters<F>) => Promise<Awaited<ReturnType<F>> | T>;
-export function tryAndGetData<F extends Func, T = undefined>(func: F, onErrorValue?: T): (...args: Parameters<F>) => ReturnType<F> | T;
-export function tryAndGetData<F extends AsyncFunc | Func, T = undefined>(func: F, onErrorValue?: T) {
-	return function (...args: Parameters<F>) {
+export function tryAndGetData<
+	RT extends R extends Promise<any> ? Promise<Awaited<R> | T> : R | T,
+	P extends Parameters<F>,
+	R extends ReturnType<F>,
+	F extends AnyFunction,
+	T = undefined
+>(func: F, onErrorValue?: T): (...args: P) => RT {
+	return function (...args: P) {
 		try {
 			const result = func(...args);
 			if (result instanceof Promise) return result.catch(() => onErrorValue);
