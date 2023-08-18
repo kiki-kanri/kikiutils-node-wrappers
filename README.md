@@ -152,7 +152,7 @@ const cWFile = await cWrappedReadFile('./package.json');
 ## Versioning
 This project adheres to [Semantic Versioning](http://semver.org).
 
-For the versions available, see the [versions on npm](https://www.npmjs.com/package/@kikiutils/fs-extra?activeTab=versions).
+For the versions available, see the [versions on npm](https://www.npmjs.com/package/@kikiutils/wrappers?activeTab=versions).
 
 ## Authors
 

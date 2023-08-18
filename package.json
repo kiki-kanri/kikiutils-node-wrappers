@@ -29,5 +29,8 @@
   "keywords": [
     "function",
     "wrappers"
-  ]
+  ],
+  "engines": {
+    "node": ">= 16.0.0"
+  }
 }
