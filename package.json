@@ -1,6 +1,6 @@
 {
   "name": "@kikiutils/wrappers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Utils function wrappers.",
   "license": "MIT",
   "author": {
@@ -27,6 +27,7 @@
     "typescript": "^5.1.6"
   },
   "keywords": [
+    "function",
     "wrappers"
   ]
 }
