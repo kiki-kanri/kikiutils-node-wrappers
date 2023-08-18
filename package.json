@@ -15,15 +15,16 @@
     "url": "https://github.com/kiki-kanri/kikiutils-node-wrappers/issues"
   },
   "type": "commonjs",
-  "main": "./lib/index.js",
+  "main": "./dist/index.js",
   "files": [
-    "./lib/**/*"
+    "./dist/**/*"
   ],
   "scripts": {
-    "build": "rm -rf ./lib && tsc && tsc-alias"
+    "build": "rm -rf ./dist && pkgroll --minify --target=node16"
   },
+  "types": "./dist/index.d.ts",
   "devDependencies": {
-    "tsc-alias": "^1.8.7",
+    "pkgroll": "^1.11.0",
     "typescript": "^5.1.6"
   },
   "keywords": [
