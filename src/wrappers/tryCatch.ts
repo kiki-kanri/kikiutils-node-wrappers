@@ -3,17 +3,16 @@ import { AnyFunction } from '@/types';
 /**
  * Run the function use try/catch.
  *
- * Returns false if there was an error. Otherwise return True.
+ * Returns false if there was an error. Otherwise return true.
  *
  * Supports async and sync function.
  */
 export function tryAndGetBoolean<
-	RT extends R extends Promise<any> ? Promise<boolean> : boolean,
+	RT extends ReturnType<F> extends Promise<any> ? Promise<boolean> : boolean,
 	P extends Parameters<F>,
-	R extends ReturnType<F>,
 	F extends AnyFunction
 >(func: F): (...args: P) => RT {
-	return function (...args: Parameters<F>) {
+	return function (...args: P) {
 		try {
 			const result = func(...args);
 			if (result instanceof Promise) return result.then(() => true).catch(() => false) as RT;
