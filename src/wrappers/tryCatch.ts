@@ -1,4 +1,4 @@
-import { AnyFunction } from '@/types';
+import { AnyFunction } from '../types';
 
 /**
  * Run the function use try/catch.
@@ -7,11 +7,11 @@ import { AnyFunction } from '@/types';
  *
  * Supports async and sync function.
  */
-export function tryAndGetBoolean<
+export const tryAndGetBoolean = <
 	RT extends ReturnType<F> extends Promise<any> ? Promise<boolean> : boolean,
 	P extends Parameters<F>,
 	F extends AnyFunction
->(func: F): (...args: P) => RT {
+>(func: F): (...args: P) => RT => {
 	return function (...args: P) {
 		try {
 			const result = func(...args);
@@ -29,13 +29,13 @@ export function tryAndGetBoolean<
  *
  * Supports async and sync function.
  */
-export function tryAndGetData<
+export const tryAndGetData = <
 	RT extends R extends Promise<any> ? Promise<Awaited<R> | T> : R | T,
 	P extends Parameters<F>,
 	R extends ReturnType<F>,
 	F extends AnyFunction,
 	T = undefined
->(func: F, onErrorValue?: T): (...args: P) => RT {
+>(func: F, onErrorValue?: T): (...args: P) => RT => {
 	return function (...args: P) {
 		try {
 			const result = func(...args);
