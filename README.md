@@ -10,7 +10,7 @@
   - [Description](#description)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Methods](#methods)
+  - [Wrappers](#wrappers)
     - [tryAndGetBoolean](#tryandgetboolean)
     - [tryAndGetData](#tryandgetdata)
   - [Notice](#notice)
@@ -24,24 +24,20 @@ This package provides some useful function wrappers.
 
 ## Prerequisites
 
-This package requires NodeJS (version 16 or later) and NPM or other package manager.
+This package requires Node v16 or above.
 
-[Node](http://nodejs.org/) and [NPM](https://npmjs.org/) are really easy to install.
+To check your installed version, run the following command.
 
-To make sure you have them available on your machine,
-try running the following command.
-
-```bash
-$ node -v && npm -v
+```sh
+$ node -v
 v20.5.1
-9.8.1
 ```
 
 ## Installation
 
 **Before installing,** please read the [prerequisites](#prerequisites).
 
-To install and set up the library, run:
+To install and use this package, run:
 
 ```bash
 $ npm i @kikiutils/wrappers     # Npm
@@ -49,7 +45,7 @@ $ pnpm add @kikiutils/wrappers  # Pnpm
 $ yarn add @kikiutils/wrappers  # Yarn
 ```
 
-## Methods
+## Wrappers
 
 All wrappers support passing in async or sync function.
 
@@ -139,6 +135,7 @@ import fsp from 'fs/promises';
 const oFile = await fsp.readFile('./package.json');
 // oFile type is Buffer
 
+// Wrapped function
 const wrappedReadFile = tryAndGetData(fsp.readFile);
 const wFile = await wrappedReadFile('./package.json');
 // wFile type is string | Buffer | undefined
@@ -150,7 +147,8 @@ const cWFile = await cWrappedReadFile('./package.json');
 ```
 
 ## Versioning
-This project adheres to [Semantic Versioning](http://semver.org).
+
+We adhere to [Semantic Versioning](http://semver.org) for this project.
 
 For the versions available, see the [versions on npm](https://www.npmjs.com/package/@kikiutils/wrappers?activeTab=versions).
 
