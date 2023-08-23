@@ -22,7 +22,6 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs"
   },
-  "types": "./dist/index.d.ts",
   "devDependencies": {
     "rollup": "^3.28.1",
     "rollup-plugin-delete": "^2.0.0",
