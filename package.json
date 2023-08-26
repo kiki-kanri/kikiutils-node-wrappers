@@ -23,6 +23,7 @@
     "build": "rollup -c --bundleConfigAsCjs"
   },
   "devDependencies": {
+    "@kikiutils/tsconfigs": "^0.1.1",
     "rollup": "^3.28.1",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-externals": "^5.1.3",
