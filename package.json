@@ -20,11 +20,11 @@
     "./dist/**/*"
   ],
   "scripts": {
-    "build": "ts-project-builder -c --build-type package"
+    "build": "ts-project-builder -c --type package"
   },
   "devDependencies": {
-    "@kikiutils/tsconfigs": "^0.2.1",
-    "ts-project-builder": "^0.6.1",
+    "@kikiutils/tsconfigs": "^1.0.0",
+    "ts-project-builder": "^2.0.0",
     "typescript": "^5.2.2"
   },
   "keywords": [
