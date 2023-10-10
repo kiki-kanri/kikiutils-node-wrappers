@@ -125,7 +125,7 @@ const asyncResult = await wrappedFunc('./package.json');
 
 If you're using typescript, wrapping a function with overloads will break the original type hints and checks for overloads.
 
-But there is a compromise on the parameters of the overload function, see this [issue](https://github.com/microsoft/TypeScript/issues/32164#issuecomment-1146737709).
+But there is a compromise on the parameters and return types of the overload function, see this [issue](https://github.com/microsoft/TypeScript/issues/32164#issuecomment-890824817).
 
 If you have a better solution or a solution for ReturnType, feel free to open an issue and raise it, thanks!
 
