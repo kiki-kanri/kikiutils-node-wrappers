@@ -1,4 +1,4 @@
-import { AnyFunction } from '../types';
+import { AnyFunction, OverloadParameters } from '../types';
 
 /**
  * Run the function use try/catch.
@@ -9,17 +9,15 @@ import { AnyFunction } from '../types';
  */
 export const tryAndGetBoolean = <
 	RT extends ReturnType<F> extends Promise<any> ? Promise<boolean> : boolean,
-	P extends Parameters<F>,
+	P extends OverloadParameters<F>,
 	F extends AnyFunction
->(func: F): (...args: P) => RT => {
-	return function (...args: P) {
-		try {
-			const result = func(...args);
-			if (result instanceof Promise) return result.then(() => true).catch(() => false) as RT;
-			return true as RT;
-		} catch (error) { }
-		return false as RT;
-	}
+>(func: F): (...args: P) => RT => (...args: P) => {
+	try {
+		const result = func(...args);
+		if (result instanceof Promise) return result.then(() => true).catch(() => false) as RT;
+		return true as RT;
+	} catch (error) { }
+	return false as RT;
 }
 
 /**
@@ -31,17 +29,15 @@ export const tryAndGetBoolean = <
  */
 export const tryAndGetData = <
 	RT extends R extends Promise<any> ? Promise<Awaited<R> | T> : R | T,
-	P extends Parameters<F>,
 	R extends ReturnType<F>,
+	P extends OverloadParameters<F>,
 	F extends AnyFunction,
 	T = undefined
->(func: F, onErrorValue?: T): (...args: P) => RT => {
-	return function (...args: P) {
-		try {
-			const result = func(...args);
-			if (result instanceof Promise) return result.catch(() => onErrorValue);
-			return result;
-		} catch (error) { }
-		return onErrorValue;
-	}
+>(func: F, onErrorValue?: T): (...args: P) => RT => (...args: P) => {
+	try {
+		const result = func(...args);
+		if (result instanceof Promise) return result.catch(() => onErrorValue);
+		return result;
+	} catch (error) { }
+	return onErrorValue;
 }
