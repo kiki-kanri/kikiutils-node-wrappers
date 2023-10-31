@@ -1,5 +1,6 @@
 import { AnyFunction, OverloadFunction } from '../types';
 
+// prettier-ignore
 /**
  * Run the function use try/catch.
  *
@@ -20,6 +21,7 @@ export const tryAndGetBoolean = <
 	return false as RT;
 }
 
+// prettier-ignore
 /**
  * Run the function use try/catch.
  *
