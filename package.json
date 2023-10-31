@@ -23,6 +23,7 @@
     "build": "ts-project-builder -c --type package"
   },
   "devDependencies": {
+    "@kikiutils/prettierrc": "^1.0.4",
     "@kikiutils/tsconfigs": "^1.0.0",
     "ts-project-builder": "^2.0.1",
     "typescript": "^5.2.2"
@@ -33,5 +34,6 @@
   ],
   "engines": {
     "node": ">= 16.0.0"
-  }
+  },
+  "prettier": "@kikiutils/prettierrc"
 }
